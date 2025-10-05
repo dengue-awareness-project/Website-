@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dengue Awareness</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:,">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="title-wrap">
+      <h1 id="siteTitle">Dengue Awareness</h1>
+    </div>
+    <div class="nav">
+      <button data-target="definition">What is Dengue?</button>
+      <button data-target="symptoms">Symptoms</button>
+      <button data-target="prevention">Prevention</button>
+      <button data-target="treatment">Treatment</button>
+      <button data-target="charts">Visuals of Data</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Definition -->
+    <section id="definition" class="card">
+      <h2>What is Dengue?</h2>
+      <p>Dengue is a mosquito-borne viral infection caused by the bite of the Aedes aegypti mosquito. Severe dengue can be life-threatening.</p>
+    </section>
+
+    <!-- Symptoms -->
+    <section id="symptoms" class="card">
+      <h2>Symptoms</h2>
+      <ul>
+        <li>High fever</li>
+        <li>Severe headache</li>
+        <li>Muscle and joint pains</li>
+        <li>Nausea and vomiting</li>
+        <li>Skin rash (2–5 days)</li>
+      </ul>
+      <h3>Organs Affected</h3>
+      <div class="table-wrap">
+        <table class="organs">
+          <thead>
+            <tr><th>Organ</th><th>Normal Work</th><th>What Dengue Virus Does</th><th>What Problem Happens</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Liver</strong> 🟠</td><td>Cleans blood, makes proteins for clotting, helps digestion</td><td>Virus enters liver cells → immune attack → swelling → enzymes leak into blood</td><td>Poor cleaning, less clotting → <strong>bleeding risk, liver failure</strong></td></tr>
+            <tr><td><strong>Bone Marrow</strong> 🔴</td><td>Produces blood cells (RBC, WBC, Platelets)</td><td>Virus slows marrow → platelet production drops</td><td>Very <strong>low platelets</strong> → bleeding</td></tr>
+            <tr><td><strong>Blood Vessels</strong> 🔵</td><td>Carry blood safely without leakage</td><td>Virus weakens vessel walls → plasma leaks out</td><td>Blood pressure falls → organs don’t get oxygen → <strong>shock</strong></td></tr>
+            <tr><td><strong>Spleen</strong> 🟣</td><td>Filters blood, removes old cells, supports immunity</td><td>Becomes overworked and swells up</td><td>Pain, rare risk of <strong>rupture and bleeding</strong></td></tr>
+            <tr><td><strong>Brain</strong> 🟡</td><td>Controls body functions, memory, thinking</td><td>Sometimes swelling or small bleeding in brain tissue</td><td>Headache, confusion, seizures → <strong>unconsciousness</strong></td></tr>
+            <tr><td><strong>Heart</strong> 💚</td><td>Pumps blood to whole body</td><td>Virus may weaken heart muscles (myocarditis)</td><td>Weak pumping → fatigue, chest pain, breathlessness</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Prevention + Treatment -->
+    <section id="prevention" class="card">
+      <h2>Prevention</h2>
+      <ul>
+        <li>Use mosquito repellents and nets</li>
+        <li>Eliminate stagnant water</li>
+        <li>Wear protective clothing</li>
+        <li>Community awareness</li>
+      </ul>
+
+      <h3 id="treatmentTable">Treatment & Care</h3>
+      <div class="table-wrap">
+        <table class="treatment">
+          <thead>
+            <tr><th>Type</th><th>Treatment Step</th><th>What It Means</th><th>Why It Is Important</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>🏠 <strong>Home Remedies / Self-Care</strong></td><td><strong>Rest & Hydration</strong></td><td>Bed rest, drink lots of water, ORS, juices, coconut water</td><td>Prevents dehydration from fever and plasma leakage</td></tr>
+            <tr><td></td><td><strong>Fever Control</strong></td><td>Take <strong>Paracetamol</strong> only (avoid aspirin/ibuprofen)</td><td>Controls fever safely without increasing bleeding risk</td></tr>
+            <tr><td></td><td><strong>Nutrition</strong></td><td>Eat light, healthy food (fruits, porridge, vegetables, soups)</td><td>Helps recovery and boosts immunity</td></tr>
+            <tr><td></td><td><strong>Monitoring at Home</strong></td><td>Check temperature, watch for warning signs</td><td>Detects early danger signs so hospital care can be given quickly</td></tr>
+            <tr><td>🏥 <strong>Doctor / Hospital Care</strong></td><td><strong>Regular Blood Tests</strong></td><td>Platelet count & hematocrit monitoring</td><td>Detects risk of bleeding and shock early</td></tr>
+            <tr><td></td><td><strong>IV Fluids</strong></td><td>Intravenous fluids if patient is dehydrated or in shock</td><td>Maintains blood pressure and hydration</td></tr>
+            <tr><td></td><td><strong>Oxygen & Monitoring</strong></td><td>Patient kept under observation with oxygen support if needed</td><td>Prevents organ damage and shock</td></tr>
+            <tr><td></td><td><strong>Platelet / Blood Transfusion</strong></td><td>Given only if platelets are very low or severe bleeding</td><td>Saves life in critical dengue cases</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section id="charts" class="card">
+      <h2>Visuals — Charts</h2>
+      <div class="chart-labels">
+        <div class="label left">🧾 Top 10 States by Dengue Cases (Selected Year)</div>
+        <div class="label right">📈 Yearly Dengue Cases Trend (2021–2025)</div>
+      </div>
+      <div class="charts-row">
+        <div class="chart-box small"><canvas id="pieChart" width="400" height="300"></canvas></div>
+        <div class="chart-box large"><canvas id="barChart" width="600" height="300"></canvas></div>
+      </div>
+      <div class="line-chart"><div class="label">⚰️ Dengue Deaths Trend (2021–2025)</div><canvas id="lineChart" width="1000" height="200"></canvas></div>
+      <div class="controls">
+        <label for="yearSelect">Select Year:</label>
+        <select id="yearSelect"></select>
+        <label for="chartType">Chart Type:</label>
+        <select id="chartType">
+          <option value="pie">Pie</option>
+          <option value="doughnut">Doughnut</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Dengue Awareness</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+    // Smooth Scroll for Navbar
+    document.querySelectorAll('.nav button').forEach(btn => {
+      btn.addEventListener('click', function () {
+        let target = this.getAttribute('data-target');
+        if (target === 'visuals') target = 'charts';
+        if (target === 'treatment') target = 'treatmentTable';
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Charts
+    availableYears.forEach(y => {
+      const opt = document.createElement('option');
+      opt.value = y; opt.textContent = y;
+      document.getElementById('yearSelect').appendChild(opt);
+    });
+    document.getElementById('yearSelect').value = Math.max(...availableYears);
+
+    let pieChart, barChart, lineChart;
+
+    function drawAll(year) {
+      const yearStr = String(year);
+      const entries = Object.keys(dengueDataAllStates).map(state => ({
+        state,
+        cases: dengueDataAllStates[state][yearStr].cases,
+        deaths: dengueDataAllStates[state][yearStr].deaths
+      }));
+      entries.sort((a, b) => b.cases - a.cases);
+      const top10 = entries.slice(0, 10);
+      const labels = top10.map(e => e.state);
+      const vals = top10.map(e => e.cases);
+
+      const pctx = document.getElementById('pieChart').getContext('2d');
+      if (pieChart) pieChart.destroy();
+      pieChart = new Chart(pctx, {
+        type: document.getElementById('chartType').value,
+        data: { labels, datasets: [{ data: vals, backgroundColor: labels.map((_, i) => `hsl(${i * 30 + 10},70%,50%)`) }] },
+        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+      });
+
+      const bctx = document.getElementById('barChart').getContext('2d');
+      if (barChart) barChart.destroy();
+      const years = availableYears;
+      const sums = years.map(y => Object.keys(dengueDataAllStates).reduce((acc, s) => acc + dengueDataAllStates[s][String(y)].cases, 0));
+      barChart = new Chart(bctx, {
+        type: 'bar',
+        data: { labels: years.map(String), datasets: [{ label: 'Total Dengue Cases (India)', data: sums, backgroundColor: 'rgba(46,204,113,0.7)' }] },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { title: { display: true, text: 'Number of Cases' } } } }
+      });
+
+      const lctx = document.getElementById('lineChart').getContext('2d');
+      if (lineChart) lineChart.destroy();
+      const deaths = years.map(y => Object.keys(dengueDataAllStates).reduce((acc, s) => acc + dengueDataAllStates[s][String(y)].deaths, 0));
+      lineChart = new Chart(lctx, {
+        type: 'line',
+        data: { labels: years.map(String), datasets: [{ label: 'Total Dengue Deaths (India)', data: deaths, borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.2)', tension: 0.3 }] },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { title: { display: true, text: 'Number of Deaths' } } } }
+      });
+    }
+
+    drawAll(Math.max(...availableYears));
+
+    document.getElementById('yearSelect').addEventListener('change', e => drawAll(e.target.value));
+    document.getElementById('chartType').addEventListener('change', () => drawAll(document.getElementById('yearSelect').value));
+  </script>
+</body>
+</html>
